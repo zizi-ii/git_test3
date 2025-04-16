@@ -11,7 +11,13 @@ public class Sort {
     }
 
     static int partition(int[] a, int start, int end) {
-        // TODO: partition 알고리즘을 구현해야 함
+        int value = a[end];
+        int i = start - 1;
+        for (int j = start; j <= end - 1; ++j)
+            if (a[j] < value)
+                swap(a, ++i, j);
+        swap(a, i + 1, end);
+        return i + 1;
     }
 
     static void quickSort(int[] a, int start, int end) {
@@ -19,5 +25,5 @@ public class Sort {
         int middle = partition(a, start, end);
         quickSort(a, start, middle-1);
         quickSort(a, middle+1, end);
-    }
+}
 }
